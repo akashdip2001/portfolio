@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.4s, color 0.4s;
+}
+
+body.dark-theme {
+    background-color: #0a0a0a;
+    color: #ffffff;
+}
+
+body.light-theme {
+    background-color: #f5f5f5;
+    color: #1a1a1a;
+}
+
+#canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.nav-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    z-index: 30;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-nav {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .glass-nav {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-theme .glass-nav {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+}
+
+.dark-theme .nav-btn {
+    color: #ffffff;
+}
+
+.light-theme .nav-btn {
+    color: #1a1a1a;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    50%, 100% { left: 100%; }
+}
+
+.nav-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .nav-btn.active {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.light-theme .nav-btn.active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.glass-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dark-theme .glass-btn {
+    background: rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+}
+
+.light-theme .glass-btn {
+    background: rgba(255, 255, 255, 0.6);
+    color: #1a1a1a;
+}
+
+.glass-btn:hover {
+    transform: scale(1.05);
+}
+
+#scrollContainer {
+    height: 600vh;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.content-section {
+    min-height: 100vh;
+    padding: 2rem;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.content-section.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.vertical-cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    gap: 40vh;
+}
+
+.info-card {
+    padding: 3rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.dark-theme .info-card {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.light-theme .info-card {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.horizontal-scroll-wrapper {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.horizontal-scroll-content {
+    display: flex;
+    gap: 4rem;
+    padding: 2rem;
+    align-items: center;
+    height: 100%;
+}
+
+.project-card {
+    min-width: 600px;
+    padding: 3rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+.dark-theme .project-card {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.light-theme .project-card {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.about-overlay {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 30vh;
+}
+
+#loader {
+    transition: opacity 0.5s;
+}
+
+#loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
